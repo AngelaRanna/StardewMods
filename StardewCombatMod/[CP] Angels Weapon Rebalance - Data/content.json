@@ -1,5 +1,12 @@
 {
   "Format": "1.18.0",
+  "ConfigSchema": {
+      "EnablePrecisionChanges": {
+          "AllowValues": "true, false",
+          "Default": "true",
+          "Description": "Turns precision changes on or off - on fixes weapon level, but off make this mod compatible with things that add monster evasion like SVE."
+      }
+  },
   "DynamicTokens": [
       {
           "Name": "MINDAMAGE",
@@ -54,6 +61,7 @@
           {
               // Values that aren't changed by this mod are commented out to preserve compatibility with other mods 
               // while still being able to see the default values for reference (or change them in the future)
+              // Precision is handled in the "when EnablePrecisionChanges = true" block below to make them configurable
 
               // End-game weapons
               "45": // Wicked Kris
@@ -62,7 +70,6 @@
                   "{{MAXDAMAGE}}": "16",
                   //"{{KNOCKBACK}}": ".5",
                   //"{{SPEED}}": "0",
-                  //"{{PRECISION}}": "8",
                   //"{{DEFENSE}}": "0",
                   "{{TARGETLVL}}": "160",
                   "{{MINLVL}}": "120",
@@ -76,7 +83,6 @@
                   //"{{MAXDAMAGE}}": "40",
                   "{{KNOCKBACK}}": "0.6",
                   //"{{SPEED}}": "3",
-                  "{{PRECISION}}": "80", //0
                   //"{{DEFENSE}}": "0",
                   //"{{TARGETLVL}}": "-1",
                   //"{{MINLVL}}": "-1",
@@ -90,7 +96,6 @@
                   "{{MAXDAMAGE}}": "300",
                   "{{KNOCKBACK}}": "3.5",
                   //"{{SPEED}}": "-4",
-                  "{{PRECISION}}": "160", //0
                   //"{{DEFENSE}}": "0",
                   //"{{TARGETLVL}}": "-1",
                   //"{{MINLVL}}": "-1",
@@ -104,7 +109,6 @@
                   //"{{MAXDAMAGE}}": "80",
                   //"{{KNOCKBACK}}": "1",
                   //"{{SPEED}}": "8",
-                  //"{{PRECISION}}": "0",
                   //"{{DEFENSE}}": "0",
                   //"{{TARGETLVL}}": "-1",
                   //"{{MINLVL}}": "-1",
@@ -120,7 +124,6 @@
                   //"{{MAXDAMAGE}}": "5",
                   //"{{KNOCKBACK}}": "1",
                   //"{{SPEED}}": "0",
-                  "{{PRECISION}}": "40", //0
                   //"{{DEFENSE}}": "0",
                   //"{{TARGETLVL}}": "-1",
                   //"{{MINLVL}}": "-1",
@@ -134,7 +137,6 @@
                   //"{{MAXDAMAGE}}": "7",
                   //"{{KNOCKBACK}}": "1",
                   //"{{SPEED}}": "0",
-                  "{{PRECISION}}": "50", //0
                   //"{{DEFENSE}}": "0",
                   //"{{TARGETLVL}}": "3",
                   //"{{MINLVL}}": "-1",
@@ -148,7 +150,6 @@
                   //"{{MAXDAMAGE}}": "8",
                   //"{{KNOCKBACK}}": "1",
                   //"{{SPEED}}": "4",
-                  "{{PRECISION}}": "40", //0
                   //"{{DEFENSE}}": "0",
                   //"{{TARGETLVL}}": "26",
                   //"{{MINLVL}}": "-1",
@@ -162,7 +163,6 @@
                   //"{{MAXDAMAGE}}": "15",
                   //"{{KNOCKBACK}}": "1",
                   //"{{SPEED}}": "0",
-                  "{{PRECISION}}": "51", //1
                   "{{DEFENSE}}": "0",
                   "{{TARGETLVL}}": "40",
                   "{{MINLVL}}": "15",
@@ -176,7 +176,6 @@
                   //"{{MAXDAMAGE}}": "14",
                   //"{{KNOCKBACK}}": "1",
                   //"{{SPEED}}": "4",
-                  "{{PRECISION}}": "50", //0
                   //"{{DEFENSE}}": "0",
                   //"{{TARGETLVL}}": "40",
                   "{{MINLVL}}": "20",
@@ -190,7 +189,6 @@
                   //"{{MAXDAMAGE}}": "17",
                   //"{{KNOCKBACK}}": "1",
                   //"{{SPEED}}": "4",
-                  "{{PRECISION}}": "40", //0
                   //"{{DEFENSE}}": "0",
                   //"{{TARGETLVL}}": "-1",
                   //"{{MINLVL}}": "-1",
@@ -204,7 +202,6 @@
                   //"{{MAXDAMAGE}}": "25",
                   //"{{KNOCKBACK}}": "1.2",
                   //"{{SPEED}}": "-4",
-                  "{{PRECISION}}": "40", //0
                   "{{DEFENSE}}": "0",
                   //"{{TARGETLVL}}": "44",
                   "{{MINLVL}}": "20",
@@ -218,7 +215,6 @@
                   //"{{MAXDAMAGE}}": "24",
                   //"{{KNOCKBACK}}": "1.2",
                   //"{{SPEED}}": "0",
-                  "{{PRECISION}}": "45", //5
                   //"{{DEFENSE}}": "0",
                   "{{TARGETLVL}}": "45",
                   "{{MINLVL}}": "20",
@@ -232,7 +228,6 @@
                   //"{{MAXDAMAGE}}": "20",
                   //"{{KNOCKBACK}}": "1",
                   //"{{SPEED}}": "4",
-                  "{{PRECISION}}": "59", //9
                   //"{{DEFENSE}}": "0",
                   //"{{TARGETLVL}}": "-1",
                   //"{{MINLVL}}": "-1",
@@ -246,7 +241,6 @@
                   //"{{MAXDAMAGE}}": "18",
                   //"{{KNOCKBACK}}": "1",
                   //"{{SPEED}}": "4",
-                  "{{PRECISION}}": "55", //5
                   "{{DEFENSE}}": "0",
                   "{{TARGETLVL}}": "50",
                   "{{MINLVL}}": "25",
@@ -260,7 +254,6 @@
                   //"{{MAXDAMAGE}}": "25",
                   //"{{KNOCKBACK}}": "1",
                   //"{{SPEED}}": "4",
-                  "{{PRECISION}}": "50", //0
                   //"{{DEFENSE}}": "0",
                   "{{TARGETLVL}}": "0",
                   "{{MINLVL}}": "75",
@@ -274,7 +267,6 @@
                   //"{{MAXDAMAGE}}": "35",
                   //"{{KNOCKBACK}}": "1.4",
                   //"{{SPEED}}": "-2",
-                  "{{PRECISION}}": "66", //6
                   "{{DEFENSE}}": "0",
                   //"{{TARGETLVL}}": "-1",
                   //"{{MINLVL}}": "-1",
@@ -288,7 +280,6 @@
                   //"{{MAXDAMAGE}}": "30",
                   //"{{KNOCKBACK}}": ".8",
                   //"{{SPEED}}": "8",
-                  "{{PRECISION}}": "55", //5
                   //"{{DEFENSE}}": "0",
                   //"{{TARGETLVL}}": "74",
                   //"{{MINLVL}}": "50",
@@ -302,7 +293,6 @@
                   //"{{MAXDAMAGE}}": "32",
                   //"{{KNOCKBACK}}": "1.3",
                   //"{{SPEED}}": "-8",
-                  "{{PRECISION}}": "50", //0
                   "{{DEFENSE}}": "0",
                   //"{{TARGETLVL}}": "86",
                   //"{{MINLVL}}": "50",
@@ -316,7 +306,6 @@
                   //"{{MAXDAMAGE}}": "29",
                   //"{{KNOCKBACK}}": "1",
                   //"{{SPEED}}": "0",
-                  //"{{PRECISION}}": "10",
                   "{{DEFENSE}}": "0",
                   //"{{TARGETLVL}}": "90",
                   //"{{MINLVL}}": "50",
@@ -330,7 +319,6 @@
                   //"{{MAXDAMAGE}}": "42",
                   //"{{KNOCKBACK}}": "1",
                   //"{{SPEED}}": "0",
-                  "{{PRECISION}}": "50", //0
                   //"{{DEFENSE}}": "4",
                   "{{TARGETLVL}}": "100",
                   "{{MINLVL}}": "75",
@@ -344,7 +332,6 @@
                   "{{MAXDAMAGE}}": "46",
                   //"{{KNOCKBACK}}": "1",
                   //"{{SPEED}}": "-2",
-                  "{{PRECISION}}": "50", //0
                   //"{{DEFENSE}}": "0",
                   //"{{TARGETLVL}}": "121",
                   //"{{MINLVL}}": "100",
@@ -358,7 +345,6 @@
                   //"{{MAXDAMAGE}}": "44",
                   //"{{KNOCKBACK}}": "1.2",
                   //"{{SPEED}}": "-6",
-                  "{{PRECISION}}": "50", //0
                   "{{DEFENSE}}": "0",
                   //"{{TARGETLVL}}": "135",
                   //"{{MINLVL}}": "100",
@@ -372,7 +358,6 @@
                   "{{MAXDAMAGE}}": "45",
                   //"{{KNOCKBACK}}": "1",
                   //"{{SPEED}}": "8",
-                  "{{PRECISION}}": "35", //5
                   //"{{DEFENSE}}": "0",
                   //"{{TARGETLVL}}": "142",
                   //"{{MINLVL}}": "100",
@@ -386,7 +371,6 @@
                   //"{{MAXDAMAGE}}": "45",
                   "{{KNOCKBACK}}": "1",
                   "{{SPEED}}": "0",
-                  "{{PRECISION}}": "40", //0
                   //"{{DEFENSE}}": "0",
                   //"{{TARGETLVL}}": "-1",
                   //"{{MINLVL}}": "-1",
@@ -400,7 +384,6 @@
                   //"{{MAXDAMAGE}}": "64",
                   //"{{KNOCKBACK}}": "1.2",
                   //"{{SPEED}}": "0",
-                  "{{PRECISION}}": "50", //0
                   "{{DEFENSE}}": "0",
                   //"{{TARGETLVL}}": "-1",
                   //"{{MINLVL}}": "-1",
@@ -416,7 +399,6 @@
                   //"{{MAXDAMAGE}}": "3",
                   //"{{KNOCKBACK}}": ".5",
                   //"{{SPEED}}": "0",
-                  "{{PRECISION}}": "-60", //0
                   //"{{DEFENSE}}": "0",
                   "{{TARGETLVL}}": "5",
                   "{{MINLVL}}": "1",
@@ -430,7 +412,6 @@
                   "{{MAXDAMAGE}}": "6",
                   //"{{KNOCKBACK}}": ".5",
                   "{{SPEED}}": "1",
-                  "{{PRECISION}}": "-70",
                   //"{{DEFENSE}}": "0",
                   "{{TARGETLVL}}": "25",
                   "{{MINLVL}}": "1",
@@ -444,7 +425,6 @@
                   "{{MAXDAMAGE}}": "10",
                   "{{KNOCKBACK}}": "0.6",
                   "{{SPEED}}": "1",
-                  "{{PRECISION}}": "-60", //0
                   //"{{DEFENSE}}": "0",
                   "{{TARGETLVL}}": "45",
                   "{{MINLVL}}": "20",
@@ -458,7 +438,6 @@
                   "{{MAXDAMAGE}}": "12",
                   //"{{KNOCKBACK}}": ".5",
                   //"{{SPEED}}": "0",
-                  "{{PRECISION}}": "-65", //5
                   //"{{DEFENSE}}": "0",
                   "{{TARGETLVL}}": "50",
                   "{{MINLVL}}": "25",
@@ -472,7 +451,6 @@
                   "{{MAXDAMAGE}}": "15",
                   //"{{KNOCKBACK}}": "1",
                   //"{{SPEED}}": "0",
-                  "{{PRECISION}}": "-80", //10
                   //"{{DEFENSE}}": "0",
                   //"{{TARGETLVL}}": "-1",
                   //"{{MINLVL}}": "-1",
@@ -486,7 +464,6 @@
                   "{{MAXDAMAGE}}": "17",
                   //"{{KNOCKBACK}}": ".5",
                   //"{{SPEED}}": "0",
-                  "{{PRECISION}}": "-62", //8
                   //"{{DEFENSE}}": "0",
                   //"{{TARGETLVL}}": "-1",
                   //"{{MINLVL}}": "-1",
@@ -500,7 +477,6 @@
                   "{{MAXDAMAGE}}": "20",
                   //"{{KNOCKBACK}}": ".5",
                   "{{SPEED}}": "1",
-                  "{{PRECISION}}": "-5", //5
                   //"{{DEFENSE}}": "0",
                   "{{TARGETLVL}}": "80",
                   "{{MINLVL}}": "50",
@@ -514,7 +490,6 @@
                   "{{MAXDAMAGE}}": "26",
                   //"{{KNOCKBACK}}": ".5",
                   //"{{SPEED}}": "0",
-                  "{{PRECISION}}": "20", //0
                   //"{{DEFENSE}}": "0",
                   "{{TARGETLVL}}": "114",
                   "{{MINLVL}}": "90",
@@ -530,7 +505,6 @@
                   "{{MAXDAMAGE}}": "40",
                   "{{KNOCKBACK}}": "2",
                   //"{{SPEED}}": "-4",
-                  //"{{PRECISION}}": "0",
                   //"{{DEFENSE}}": "0",
                   "{{TARGETLVL}}": "9",
                   "{{MINLVL}}": "1",
@@ -544,7 +518,6 @@
                   "{{MAXDAMAGE}}": "50",
                   "{{KNOCKBACK}}": "2",
                   //"{{SPEED}}": "-8",
-                  "{{PRECISION}}": "60", //0
                   //"{{DEFENSE}}": "0",
                   //"{{TARGETLVL}}": "32",
                   "{{MINLVL}}": "1",
@@ -558,7 +531,6 @@
                   "{{MAXDAMAGE}}": "100",
                   "{{KNOCKBACK}}": "2.3",
                   //"{{SPEED}}": "-4",
-                  "{{PRECISION}}": "81", //1
                   //"{{DEFENSE}}": "0",
                   //"{{TARGETLVL}}": "68",
                   "{{MINLVL}}": "43",
@@ -572,7 +544,6 @@
                   "{{MAXDAMAGE}}": "125",
                   "{{KNOCKBACK}}": "2",
                   //"{{SPEED}}": "-16",
-                  "{{PRECISION}}": "140", //0
                   //"{{DEFENSE}}": "0",
                   "{{TARGETLVL}}": "75",
                   //"{{MINLVL}}": "50",
@@ -586,7 +557,6 @@
                   "{{MAXDAMAGE}}": "175",
                   "{{KNOCKBACK}}": "2.3",
                   //"{{SPEED}}": "-10",
-                  "{{PRECISION}}": "140", //0
                   //"{{DEFENSE}}": "0",
                   //"{{TARGETLVL}}": "107",
                   "{{MINLVL}}": "82",
@@ -600,7 +570,6 @@
                   "{{MAXDAMAGE}}": "200",
                   "{{KNOCKBACK}}": "2",
                   //"{{SPEED}}": "-12",
-                  "{{PRECISION}}": "180", //0
                   //"{{DEFENSE}}": "0",
                   //"{{TARGETLVL}}": "128",
                   //"{{MINLVL}}": "100",
@@ -616,7 +585,6 @@
                   //"{{MAXDAMAGE}}": "3",
                   //"{{KNOCKBACK}}": "1",
                   //"{{SPEED}}": "308",
-                  //"{{PRECISION}}": "0",
                   //"{{DEFENSE}}": "0",
                   //"{{TARGETLVL}}": "-1",
                   //"{{MINLVL}}": "-1",
@@ -630,7 +598,6 @@
                   //"{{MAXDAMAGE}}": "3",
                   //"{{KNOCKBACK}}": "1",
                   //"{{SPEED}}": "308",
-                  //"{{PRECISION}}": "0",
                   //"{{DEFENSE}}": "0",
                   //"{{TARGETLVL}}": "-1",
                   //"{{MINLVL}}": "-1",
@@ -646,7 +613,6 @@
                   //"{{MAXDAMAGE}}": "3",
                   //"{{KNOCKBACK}}": "1",
                   //"{{SPEED}}": "0",
-                  //"{{PRECISION}}": "0",
                   //"{{DEFENSE}}": "0",
                   //"{{TARGETLVL}}": "-1",
                   //"{{MINLVL}}": "-1",
@@ -660,13 +626,205 @@
                   "{{MAXDAMAGE}}": "18",
                   //"{{KNOCKBACK}}": "1",
                   //"{{SPEED}}": "0",
-                  //"{{PRECISION}}": "0",
                   //"{{DEFENSE}}": "0",
                   //"{{TARGETLVL}}": "-1",
                   //"{{MINLVL}}": "-1",
                   //"{{AOE}}": "2",
                   "{{CRIT}}": ".01",
                   "{{CRITMULT}}": "37"
+              }
+          }
+       },
+       {
+          "Action": "EditData",
+          "Target": "Data/weapons",
+          "When": {
+              "EnablePrecisionChanges": "true"
+          },
+          "Fields":
+          {
+              // End-game weapons
+              "45": // Wicked Kris
+              {
+                  //"{{PRECISION}}": "8",
+              },
+              "23": // Galaxy Dagger
+              {
+                  "{{PRECISION}}": "80", //0
+              },
+              "29": // Galaxy Hammer
+              {
+                  "{{PRECISION}}": "160", //0
+              },
+              "4": // Galaxy Sword
+              {
+                  //"{{PRECISION}}": "0",
+              },
+
+              // Swords
+              "0": // Rusty Sword
+              {
+                  "{{PRECISION}}": "40", //0
+              },
+              "12": // Wooden Blade
+              {
+                  "{{PRECISION}}": "50", //0
+              },
+              "11": // Steel Smallsword
+              {
+                  "{{PRECISION}}": "40", //0
+              },
+              "1": // Silver Saber
+              {
+                  "{{PRECISION}}": "51", //1
+              },
+              "43": // Pirate's Sword
+              {
+                  "{{PRECISION}}": "50", //0
+              },
+              "44": // Cutlass
+              {
+                  "{{PRECISION}}": "40", //0
+              },
+              "6": // Iron Edge
+              {
+                  "{{PRECISION}}": "40", //0
+              },
+              "3": // Holy Blade
+              {
+                  "{{PRECISION}}": "45", //5
+              },
+              "13": // Insect Head
+              {
+                  "{{PRECISION}}": "59", //9
+              },
+              "15": // Forest Sword
+              {
+                  "{{PRECISION}}": "55", //5
+              },
+              "49": // Rapier
+              {
+                  "{{PRECISION}}": "50", //0
+              },
+              "14": // Neptune's Glaive
+              {
+                  "{{PRECISION}}": "66", //6
+              },
+              "5": // Bone Sword
+              {
+                  "{{PRECISION}}": "55", //5
+              },
+              "10": // Claymore
+              {
+                  "{{PRECISION}}": "50", //0
+              },
+              "7": // Templar's Blade
+              {
+                  //"{{PRECISION}}": "10",
+              },
+              "48": // Yeti Tooth
+              {
+                  "{{PRECISION}}": "50", //0
+              },
+              "8": // Obsidian Edge
+              {
+                  "{{PRECISION}}": "50", //0
+              },
+              "52": // Tempered Broadsword
+              {
+                  "{{PRECISION}}": "50", //0
+              },
+              "50": // Steel Falchion
+              {
+                  "{{PRECISION}}": "35", //5
+              },
+              "2": // Dark Sword
+              {
+                  "{{PRECISION}}": "40", //0
+              },
+              "9": // Lava Katana
+              {
+                  "{{PRECISION}}": "50", //0
+              },
+
+              // Daggers
+              "16": // Carving Knife
+              {
+                  "{{PRECISION}}": "-60", //0
+              },
+              "17": // Iron Dirk
+              {
+                  "{{PRECISION}}": "-70",
+              },
+              "22": // Wind Spire
+              {
+                  "{{PRECISION}}": "-60", //0
+              },
+              "20": // Elf Blade
+              {
+                  "{{PRECISION}}": "-65", //5
+              },
+              "21": // Crystal Dagger
+              {
+                  "{{PRECISION}}": "-80", //10
+              },
+              "51": // Broken Trident
+              {
+                  "{{PRECISION}}": "-62", //8
+              },
+              "18": // Burglar's Shank
+              {
+                  "{{PRECISION}}": "-5", //5
+              },
+              "19": // Shadow Dagger
+              {
+                  "{{PRECISION}}": "20", //0
+              },
+
+              // Hammers
+              "31": // Femur
+              {
+                  //"{{PRECISION}}": "0",
+              },
+              "24": // Wood Club
+              {
+                  "{{PRECISION}}": "60", //0
+              },
+              "27": // Wood Mallet
+              {
+                  "{{PRECISION}}": "81", //1
+              },
+              "26": // Lead Rod
+              {
+                  "{{PRECISION}}": "140", //0
+              },
+              "46": // Kudgel
+              {
+                  "{{PRECISION}}": "140", //0
+              },
+              "28": // The Slammer
+              {
+                  "{{PRECISION}}": "180", //0
+              },
+
+              // Slingshots
+              "32": // Slingshot
+              {
+                  //"{{PRECISION}}": "0",
+              },
+              "33": // Master Slingshot
+              {
+                  //"{{PRECISION}}": "0",
+              },
+
+              // Scythes
+              "47": // Scythe
+              {
+                  //"{{PRECISION}}": "0",
+              },
+              "53": // Golden Scythe
+              {
+                  //"{{PRECISION}}": "0",
               }
           }
        },
