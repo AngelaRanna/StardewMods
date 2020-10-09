@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using Harmony;
+using Microsoft.Xna.Framework;
 using StardewModdingAPI;
 using StardewModdingAPI.Events;
 using StardewValley;
@@ -15,11 +17,19 @@ namespace StardewCombatMod
 
             // Make sure to get the monitor set up for debugging prints
             CheckEventPostfixPatch.Initialize(this.Monitor);
+            WeaponDoDamagePostfixPatch.Initialize(this.Monitor);
 
             var harmony = HarmonyInstance.Create(this.ModManifest.UniqueID);
+
+            // Patch to do the clean checkForEvents entry that doesn't interfere with other mods' events
             harmony.Patch(
                 original: AccessTools.Method(typeof(GameLocation), nameof(GameLocation.checkForEvents)),
                 postfix: new HarmonyMethod(typeof(CheckEventPostfixPatch), nameof(CheckEventPostfixPatch.checkForEvents_postfix))
+                );
+            // Patch to do a second pass at destroying objects in a weapons' AOE range
+            harmony.Patch(
+                original: AccessTools.Method(typeof(StardewValley.Tools.MeleeWeapon), nameof(StardewValley.Tools.MeleeWeapon.DoDamage)),
+                postfix: new HarmonyMethod(typeof(WeaponDoDamagePostfixPatch), nameof(WeaponDoDamagePostfixPatch.doDamage_postfix))
                 );
         }
 
@@ -79,6 +89,58 @@ namespace StardewCombatMod
             {
                 Monitor.Log($"Failed in {nameof(checkForEvents_postfix)}:\n{ex}", LogLevel.Error);
             }
+        }
+    }
+
+    public class WeaponDoDamagePostfixPatch
+    {
+        private static IMonitor Monitor;
+
+        public static void Initialize(IMonitor monitor)
+        {
+            Monitor = monitor;
+        }
+
+        public static void doDamage_postfix(GameLocation location, int x, int y, int facingDirection, int power, Farmer who)
+        {
+            try
+            {
+                // Get the weapon's area of affect
+                Vector2 zero1 = Vector2.Zero;
+                Vector2 zero2 = Vector2.Zero;
+                Rectangle areaOfEffect = (who.CurrentItem as StardewValley.Tools.MeleeWeapon).getAreaOfEffect(x, y, facingDirection, ref zero1, ref zero2, who.GetBoundingBox(), who.FarmerSprite.currentAnimationIndex);
+
+                // For each tile in the area
+                foreach (Vector2 locationToClear in getAllTilesInArea(areaOfEffect))
+                {
+                    // Play the toolAction on that aread and remove any objects there
+                    if (location.objects.ContainsKey(locationToClear) && location.objects[locationToClear].performToolAction((Tool)who.CurrentItem, location))
+                        location.objects.Remove(locationToClear);
+                }
+            }
+            catch (Exception ex)
+            {
+                Monitor.Log($"Failed in {nameof(doDamage_postfix)}:\n{ex}", LogLevel.Error);
+            }
+        }
+
+        private static List<Vector2> getAllTilesInArea(Rectangle rectangle)
+        {
+            // Use a hash set so we only add unique locations
+            HashSet<Vector2> hset = new HashSet<Vector2>();
+
+            // For each location in the area (trimmed by 64 to match game coordinates), add it to the set
+            for (int i = rectangle.Left; i < rectangle.Right; i++)
+            {
+                for (int j = rectangle.Top; j < rectangle.Bottom; j++)
+                {
+                    hset.Add(new Vector2(i/64, j/64));
+                }
+            }
+
+            // Convert back to a list before returning
+            List<Vector2> ret = new List<Vector2>(hset);
+            return ret;
         }
     }
 }

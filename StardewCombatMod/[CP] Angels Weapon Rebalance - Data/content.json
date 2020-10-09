@@ -73,7 +73,7 @@
                   //"{{DEFENSE}}": "0",
                   "{{TARGETLVL}}": "160",
                   "{{MINLVL}}": "120",
-                  //"{{AOE}}": "2",
+                  "{{AOE}}": "10", //2
                   "{{CRIT}}": ".67",
                   "{{CRITMULT}}": "3"
               },
@@ -86,7 +86,7 @@
                   //"{{DEFENSE}}": "0",
                   //"{{TARGETLVL}}": "-1",
                   //"{{MINLVL}}": "-1",
-                  "{{AOE}}": "10",
+                  "{{AOE}}": "100",
                   "{{CRIT}}": "0.0",
                   "{{CRITMULT}}": "1.0"
               },
@@ -99,7 +99,7 @@
                   //"{{DEFENSE}}": "0",
                   //"{{TARGETLVL}}": "-1",
                   //"{{MINLVL}}": "-1",
-                  "{{AOE}}": "5",
+                  "{{AOE}}": "25",
                   "{{CRIT}}": "0.0",
                   "{{CRITMULT}}": "1.0"
               },
@@ -257,7 +257,7 @@
                   //"{{DEFENSE}}": "0",
                   "{{TARGETLVL}}": "0",
                   "{{MINLVL}}": "75",
-                  //"{{AOE}}": "2",
+                  "{{AOE}}": "15", //2
                   "{{CRIT}}": ".05",
                   "{{CRITMULT}}": "1.5"
               },
@@ -348,7 +348,7 @@
                   "{{DEFENSE}}": "0",
                   //"{{TARGETLVL}}": "135",
                   //"{{MINLVL}}": "100",
-                  //"{{AOE}}": "1",
+                  "{{AOE}}": "10", //1
                   "{{CRIT}}": ".05",
                   "{{CRITMULT}}": "1.5"
               },
@@ -374,7 +374,7 @@
                   //"{{DEFENSE}}": "0",
                   //"{{TARGETLVL}}": "-1",
                   //"{{MINLVL}}": "-1",
-                  //"{{AOE}}": "2",
+                  "{{AOE}}": "15", //2
                   "{{CRIT}}": ".1",
                   "{{CRITMULT}}": "1.5"
               },
@@ -387,7 +387,7 @@
                   "{{DEFENSE}}": "0",
                   //"{{TARGETLVL}}": "-1",
                   //"{{MINLVL}}": "-1",
-                  //"{{AOE}}": "2",
+                  "{{AOE}}": "15", //2
                   "{{CRIT}}": ".1",
                   "{{CRITMULT}}": "2.0"
               },
@@ -467,7 +467,7 @@
                   //"{{DEFENSE}}": "0",
                   //"{{TARGETLVL}}": "-1",
                   //"{{MINLVL}}": "-1",
-                  //"{{AOE}}": "2",
+                  "{{AOE}}": "15", //2
                   "{{CRIT}}": ".56",
                   "{{CRITMULT}}": "2"
               },
@@ -508,7 +508,7 @@
                   //"{{DEFENSE}}": "0",
                   "{{TARGETLVL}}": "9",
                   "{{MINLVL}}": "1",
-                  "{{AOE}}": "2",
+                  "{{AOE}}": "20",
                   "{{CRIT}}": ".05",
                   "{{CRITMULT}}": "2"
               },
@@ -521,7 +521,7 @@
                   //"{{DEFENSE}}": "0",
                   //"{{TARGETLVL}}": "32",
                   "{{MINLVL}}": "1",
-                  "{{AOE}}": "2",
+                  "{{AOE}}": "20",
                   "{{CRIT}}": ".05",
                   "{{CRITMULT}}": "2"
               },
@@ -534,7 +534,7 @@
                   //"{{DEFENSE}}": "0",
                   //"{{TARGETLVL}}": "68",
                   "{{MINLVL}}": "43",
-                  "{{AOE}}": "2",
+                  "{{AOE}}": "20",
                   "{{CRIT}}": ".05",
                   "{{CRITMULT}}": "2"
               },
@@ -547,7 +547,7 @@
                   //"{{DEFENSE}}": "0",
                   "{{TARGETLVL}}": "75",
                   //"{{MINLVL}}": "50",
-                  "{{AOE}}": "3",
+                  "{{AOE}}": "25",
                   "{{CRIT}}": ".05",
                   "{{CRITMULT}}": "2"
               },
@@ -560,7 +560,7 @@
                   //"{{DEFENSE}}": "0",
                   //"{{TARGETLVL}}": "107",
                   "{{MINLVL}}": "82",
-                  "{{AOE}}": "2",
+                  "{{AOE}}": "20",
                   "{{CRIT}}": ".05",
                   "{{CRITMULT}}": "2.5"
               },
@@ -573,7 +573,7 @@
                   //"{{DEFENSE}}": "0",
                   //"{{TARGETLVL}}": "128",
                   //"{{MINLVL}}": "100",
-                  "{{AOE}}": "4",
+                  "{{AOE}}": "32",
                   "{{CRIT}}": ".05",
                   "{{CRITMULT}}": "2"
               },
@@ -636,6 +636,7 @@
           }
        },
        {
+          // Do the Precision changes here so they can be controlled via config
           "Action": "EditData",
           "Target": "Data/weapons",
           "When": {
@@ -828,6 +829,20 @@
               }
           }
        },
+       /*
+       *{
+       *    // Update the text of the galaxy dagger to add something about the AoE
+       *    "Action": "EditData",
+       *    "Target": "Data/weapons",
+       *    "TextOperations":
+       *    {
+       *        "Operation": "Append",
+       *        "Target": ["23", "1"], // Galaxy Dagger, description field
+       *        "Value": "The air well beyond the blade hums when swung, as if the blade were much larger.",
+       *        "Delimiter": " "
+       *    },
+       *},
+       */
        {
            // Contents of the mail sent to you after floor 1 of the mines
           "Action": "EditData",
@@ -849,6 +864,9 @@
            "LogName": "Events",
            "Action": "Load",
            "Target": "Characters/Gil",
+           "When": {
+               "HasMod |contains=FlashShifter.StardewValleyExpandedCP": false
+           },
            "FromFile": "assets/WeaponRebalanceInvisoGil.png"
        },
        {
