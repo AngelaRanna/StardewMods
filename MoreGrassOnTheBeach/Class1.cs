@@ -19,17 +19,23 @@ namespace MoreGrassOnTheBeach
         {
             if (Game1.whichFarm == 6 || Config.moreGrassOnOtherFarms || Game1.whichFarm == 1)
             {
-                Game1.getFarm().growWeedGrass(1);
+                Game1.getFarm().growWeedGrass(Config.numberOfSpawns);
             }
 
             if ((Game1.whichFarm == 5 || Game1.whichFarm == 3) && Config.moreRocksOnTheMines)
             {
-                Game1.getFarm().doDailyMountainFarmUpdate();
+                for (int i = 0; i < Config.numberOfSpawns; i++)
+                {
+                    Game1.getFarm().doDailyMountainFarmUpdate();
+                }
             }
 
             if (Game1.whichFarm == 2 && Config.moreForageInTheForest)
             {
-                doForestFarmUpdate();
+                for (int i = 0; i < Config.numberOfSpawns; i++)
+                {
+                    doForestFarmUpdate();
+                }
             }
         }
 
@@ -135,5 +141,6 @@ namespace MoreGrassOnTheBeach
         public bool moreGrassOnOtherFarms { get; set; } = false;
         public bool moreRocksOnTheMines { get; set; } = true;
         public bool moreForageInTheForest { get; set; } = false;
+        public int numberOfSpawns { get; set; } = 1;
     }
 }
